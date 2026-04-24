@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gasoline Monitor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+
+    <!-- Navbar -->
+    <nav class="bg-blue-600 p-4 shadow-md">
+        <div class="container mx-auto">
+            <h1 class="text-white text-xl font-semibold">Giá xăng dầu hôm nay</h1>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <div class="container mx-auto mt-8 p-4">
+        <div class="bg-white shadow-md rounded-2xl p-6">
+            <h2 class="text-2xl font-bold mb-4">Giá xăng dầu hôm nay</h2>
+
+            <div class="overflow-x-auto">
+                <table class="min-w-full border border-gray-200 rounded-lg">
+                    <thead class="bg-gray-200">
+                        <tr>
+                            <th class="py-3 px-4 text-left">Mặt hàng</th>
+                            <th class="py-3 px-4 text-left">Giá điều chỉnh</th>
+                            <th class="py-3 px-4 text-left">Chênh lệch giá điều chỉnh</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y">
+                        <% data.forEach(item => { %>
+                            <tr class="hover:bg-gray-50">
+                                <td class="py-3 px-4"><%= item.item %></td>
+
+                                <td class="py-3 px-4">
+                                    <%= item.price.toLocaleString() %> <%= currency %>
+                                </td>
+
+                                <td class="py-3 px-4 
+                                    <%= item.deviant >= 0 ? 'text-green-600' : 'text-red-600' %>">
+                                    
+                                    <%= item.deviant > 0 ? '+' : '' %>
+                                    <%= item.deviant.toLocaleString() %>
+                                </td>
+                            </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
