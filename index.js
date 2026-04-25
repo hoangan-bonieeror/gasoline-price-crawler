@@ -11,7 +11,13 @@ const crawlUtil = require('./utils/crawl');
 
 app.get('/', async (req,res) => {
     const data = await crawlUtil.adjustDataByLocale(req)
-    res.render('main', data);
+
+    const americaData = await crawlUtil.adjustDataByLocale(req, crawlUtil.crawlAmericanFuel, 'USD')
+    console.log(data)
+    res.render('main', {
+        VIETNAM: data,
+        AMERICA: americaData
+    });
 })
 
 app.get('/api/gasoline-data', async (req,res) => {

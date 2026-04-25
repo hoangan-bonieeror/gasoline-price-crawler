@@ -2,7 +2,7 @@ const crawl = require('./crawl')
 
 const refresh = async (client) => {
     try {
-        const data = await crawl('https://pvoil.com.vn/truyen-thong/tin-gia-xang-dau')
+        const data = await crawl('https://pvoil.com.vn/tin-gia-xang-dau')
         let insertString = 'INSERT INTO gasoline_tbl(item, price, deviant) VALUES '
         let insertItemArr = []
 
